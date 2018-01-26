@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.selected {
+  background-color: green; 
+}
+
 #pizzaDisplayRow {
   display: relative;
 }
