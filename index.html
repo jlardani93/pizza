@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="utf-8">
+    <title>Order Pizza</title>
+  </head>
+  <body>
+    <div class="container">
+
+
+      <div class="jumbotron">
+        <h1 id="title"></h1>
+      </div>
+
+      <!-- //user can click on button within this row to launch the initial form to make an order -->
+      <div class="row" id="placeAnOrderRow">
+        <div class="col-md-12">
+          <button type="button" class="btn" id="placeAnOrder">Place An Order</button>
+        </div>
+      </div>
+
+      <!-- user can fill out this form to provide their name and address before deciding to start creating an order -->
+      <div class="row hidden" id="formRow">
+        <div class="col-md-12">
+
+          <form id="form">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="formName">
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" id="formAddress">
+            </div>
+
+            <button type="submit" class="btn" id="submitForm">Submit and Build Pizza</button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- user can create a pizza that will be added to their order -->
+      <div class="row hidden" id="pizzaBuilderContainerRow">
+        <div class="col-md-12">
+
+          <div class="row" id="pizzaBaseRow">
+            <p>What type of pizza base would you like?</p>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="cheeseButton">Cheese and Tomato Sauce</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="noCheeseButton">Only Tomato Sauce</button>
+            </div>
+          </div>
+
+          <div class="row hidden" id="pizzaSizeRow">
+            <p>What size pizza would you like?</p>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="smallPizzaButton">Small</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="mediumPizzaButton">Medium</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="largePizzaButton">Large</button>
+            </div>
+          </div>
+
+          <div class="row hidden" id="buildPizzaRow">
+
+            <div class="col-md-12">
+              <div class="row" id="toppingsRow">
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Anchovies</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Broccoli</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Basil</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Cheese</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Ham</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Jalapenos</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Mushrooms</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn topping">Pineapple</button>
+                </div>
+              </div>
+
+              <div class="row" id="pizzaDisplayRow">
+                <img class="hidden" src="img/pizza-cheese.png" alt="Cheese Pizza Base">
+                <img class="hidden" src="img/pizza-no-cheese.jpg" lat="No Cheese Pizza Base">
+                <img class="hidden" src="img/anchovy.svg" alt="Anchovy">
+                <img class="hidden" src="img/basil.png" alt="Basil">
+                <img class="hidden" src="img/broccoli.png" alt="Broccoli">
+                <img class="hidden" src="img/cheese.png" alt="Cheese">
+                <img class="hidden" src="img/ham.png" alt="Ham">
+                <img class="hidden" src="img/jalapeno.png" alt="Jalapeno">
+                <img class="hidden" src="img/mushroom.png" alt="Mushroom">
+                <img class="hidden" src="img/pineapple.jpg" alt="Pineapple">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row" id="orderInfoRow">
+            <div class="col-md-12">
+              <h2 id="totalCost"></h2>
+              <h2 id="pizzasOrdered"></h2>
+            </div>
+          </div>
+
+          <div class="row" id="submitPizzaRow">
+            <div class="col-md-12">
+              <button type="button" class="btn" id="submitPizza">Order Pizza</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- user can choose to continue to confirmation or order another pizza -->
+      <div class="row hidden" id="orderMorePizzaRow">
+        <p>Would you like to add another pizza to your order?</p>
+        <div class="col-md-6">
+          <button type="button" class="btn" id="noMorePizza">No</button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn" id="morePizza">Yes</button>
+        </div>
+      </div>
+
+      <!-- user can see their current pizzas, delete pizzas, order new pizza, or complete their order -->
+      <div class="row hidden" id="orderConfirmationRow">
+        <div class="col-md-12">
+          <p id="confirmationMessage"></p>
+          <div class="row" id="pizzasContainer">
+            <!-- <div class="col-md-4 pizzaColumn">
+              <div class="pizza">
+                <h3 class="pizzaNumber"></h3>
+                <p class="pizzaBase"></p>
+                <p class="pizzaSize"></p>
+                <ul class="toppingsList">
+                  <li class="topping"></li>
+                </ul>
+                <button type="button" class="removePizza">Remove Pizza</button>
+              </div>
+            </div> -->
+          </div>
+          <div class="row" id="confirmOrAddPizza">
+            <div class="col-md-6">
+              <button type="button" class="btn" id="addPizza">Add Pizza</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn" id="confirmOrder">Confirm Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+</html>
