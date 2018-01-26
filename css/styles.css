@@ -3,9 +3,27 @@
 }
 
 .selected {
-  background-color: green; 
+  background-color: green;
 }
 
 #pizzaDisplayRow {
-  display: relative;
+  position: relative;
+  height: 500px;
+  width: 500px;
+  border: 2px solid black;
+}
+
+#pizzaDisplayRow img {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+}
+
+#pizzaDisplayRow img.base {
+  height: 450px;
+  width: 450px; 
+}
+
+#img0 {
+  z-index: 5;
 }
