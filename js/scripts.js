@@ -15,7 +15,7 @@ var Order = {
   },
 
   removePizza: function(index) {
-    this.pizzas.splice(index-1, index);
+    this.pizzas.splice(index, index+1);
   },
 
   reset: function() {
@@ -131,7 +131,7 @@ $(document).ready(function() {
 
   var updateOrder = function() {
     Order.setTotalPrice();
-    var kitchenPizzaPrice = 0
+    var kitchenPizzaPrice = 0;
     if (Kitchen.pizza) {
     Kitchen.pizza.setTotalPrice();
     kitchenPizzaPrice = Kitchen.pizza.totalPrice;
