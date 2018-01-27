@@ -176,7 +176,7 @@ $(document).ready(function() {
       $("#pizzasContainer .pizzaColumn:last-child").find(".pizza").find("button").click(function() {
         Order.removePizza($(this).val());
         updateOrder();
-        $(this).parent().parent().remove();
+        $(this).parent().parent().parent().remove();
       });
 
     });
@@ -200,35 +200,35 @@ $(document).ready(function() {
 
   $("#cheeseButton").click(function() {
     Kitchen.pizza.setBase(Kitchen.bases[0])
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#pizzaSizeRow").toggleClass("hidden");
     $("#cheeseAndTomatoSauce").toggleClass("hidden");
   });
 
   $("#noCheeseButton").click(function() {
     Kitchen.pizza.setBase(Kitchen.bases[1])
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#pizzaSizeRow").toggleClass("hidden");
     $("#onlyTomatoSauce").toggleClass("hidden");
   });
 
   $("#smallPizzaButton").click(function() {
     Kitchen.pizza.setSizeCost(0);
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#buildPizzaRow, #submitPizzaRow").toggleClass("hidden");
     updateOrder();
   });
 
   $("#mediumPizzaButton").click(function() {
     Kitchen.pizza.setSizeCost(2);
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#buildPizzaRow, #submitPizzaRow").toggleClass("hidden");
     updateOrder();
   });
 
   $("#largePizzaButton").click(function() {
     Kitchen.pizza.setSizeCost(4);
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#buildPizzaRow, #submitPizzaRow").toggleClass("hidden");
     updateOrder();
   });
@@ -260,20 +260,26 @@ $(document).ready(function() {
     updateOrder();
   });
 
-  $("#morePizza, #addPizza").click(function() {
-    $(this).parent().parent().toggleClass("hidden");
+  $("#morePizza").click(function() {
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
+    $("#pizzaBaseRow, #pizzaDisplayRow").toggleClass("hidden");
+    Kitchen.pizza = new Pizza();
+  });
+
+  $("#addPizza").click(function() {
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#pizzaBaseRow, #pizzaDisplayRow").toggleClass("hidden");
     Kitchen.pizza = new Pizza();
   });
 
   $("#noMorePizza").click(function() {
-    $(this).parent().parent().toggleClass("hidden");
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#orderConfirmationRow").toggleClass("hidden");
     displayPizzas();
   });
 
   $("#confirmOrder").click(function() {
-
+    $(this).parent().parent().parent().parent().toggleClass("hidden");
   });
 
 

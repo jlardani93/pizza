@@ -1,3 +1,16 @@
+body {
+  margin: 200px;
+  border: 5px solid black;
+}
+
+button.btn {
+  border: 1px solid black;
+}
+
+.row {
+  border: 2px solid black;
+}
+
 .hidden {
   display: none !important;
 }
@@ -21,7 +34,7 @@
 
 #pizzaDisplayRow img.base {
   height: 450px;
-  width: 450px; 
+  width: 450px;
 }
 
 #img0 {
