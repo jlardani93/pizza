@@ -15,7 +15,7 @@ var Order = {
   },
 
   removePizza: function(index) {
-    this.pizzas.splice(index, index+1);
+    this.pizzas.splice(index, 1);
   },
 
   reset: function() {
@@ -141,13 +141,25 @@ $(document).ready(function() {
     $("#pizzasOrdered").text("Pizzas Ordered: " + Order.pizzas.length);
   };
 
+  var displayImage = function(index) {
+    var x_offSet = 0;
+    var y_offSet = 0;
+
+    x_offSet = Math.floor((Math.random()*300) + 100);
+    y_offSet = Math.floor((Math.random()*300) + 100);
+
+    $("#img" + index).css("top", x_offSet + "px");
+    $("#img" + index).css("left", y_offSet + "px");
+  };
+
   var displayPizzas = function() {
-    var index = 1
+
     Order.pizzas.forEach(function(pizza) {
+      var pizzaNumber = 0;
       var cost = pizza.totalCost;
       var toppings = pizza.toppings;
       var base = pizza.base.name;
-      var size = undefined;
+      var size = '';
 
       if (pizza.sizeCost === 0) {
         size = "small";
@@ -157,13 +169,15 @@ $(document).ready(function() {
         size = "large";
       };
 
+      pizzaNumber = ($("#pizzasContainer .pizzaColumn:last-child").index() + 2);
+
       $("#pizzasContainer").append('<div class="col-md-4 pizzaColumn">' +
                                       '<div class="pizza">' +
-                                        '<h3 class="pizzaNumber">Pizza Number: ' + index +
-                                        '<p class="pizzaBase">Pizza Base: ' + base +
-                                        '<p class="pizzaSize">Pizza Size: ' + size +
+                                        '<h3 class="pizzaNumber">Pizza Number: ' + pizzaNumber + '</h3>' +
+                                        '<p class="pizzaBase">Pizza Base: ' + base + '</p>' +
+                                        '<p class="pizzaSize">Pizza Size: ' + size + '</p>' +
                                         '<ul class="toppingsList">Toppings</ul>' +
-                                        '<button type="button" class="removePizza" value="' + index + '">Remove Pizza</button>' +
+                                        '<button type="button" class="removePizza">Remove Pizza</button>' +
                                       '</div>' +
                                     '</div>');
 
@@ -171,15 +185,18 @@ $(document).ready(function() {
         $("#pizzasContainer .pizzaColumn:last-child").find(".pizza").find("ul").append('<li>' + topping.name + '</li>');
       });
 
-      index++;
-
       $("#pizzasContainer .pizzaColumn:last-child").find(".pizza").find("button").click(function() {
-        Order.removePizza($(this).val());
+        console.log($(this).parent().parent().index());
+        Order.removePizza($(this).parent().parent().index());
         updateOrder();
-        $(this).parent().parent().parent().remove();
+        $(this).parent().parent().remove();
       });
 
     });
+  };
+
+  var removePizzas = function() {
+    $(".pizzaColumn").remove();
   };
 
   stockKitchen();
@@ -187,6 +204,7 @@ $(document).ready(function() {
   $("#placeAnOrder").click(function() {
     $(this).parent().parent().toggleClass("hidden");
     $("#formRow").toggleClass("hidden");
+    $("#finalMessage").addClass("hidden");
   });
 
   $("#form").submit(function(event) {
@@ -238,6 +256,7 @@ $(document).ready(function() {
     console.log($(this).val());
     var topping = Kitchen.getTopping(index);
     $("#img" + index).toggleClass("hidden");
+    displayImage(index);
     if (Kitchen.pizza.hasTopping(topping) === false) {
       Kitchen.pizza.addTopping(topping);
       updateOrder();
@@ -270,6 +289,7 @@ $(document).ready(function() {
     $(this).parent().parent().parent().parent().toggleClass("hidden");
     $("#pizzaBaseRow, #pizzaDisplayRow").toggleClass("hidden");
     Kitchen.pizza = new Pizza();
+    removePizzas();
   });
 
   $("#noMorePizza").click(function() {
@@ -279,7 +299,14 @@ $(document).ready(function() {
   });
 
   $("#confirmOrder").click(function() {
-    $(this).parent().parent().parent().parent().toggleClass("hidden");
+    $(".hidden").removeClass("hidden");
+    $(".initHidden").toggleClass("hidden");
+    $("#finalMessage").removeClass("hidden");
+    removePizzas();
+    $("#customerNameSpan").text(Customer.name);
+    $("#customerAddressSpan").text(Customer.address);
+    $("#placeAnOrder").text("Place Another Order");
+
   });
 
 

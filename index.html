@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
     <meta charset="utf-8">
-    <title>Order Pizza</title>
+    <title>Pizza</title>
   </head>
   <body>
     <div class="container">
@@ -24,7 +24,7 @@
       </div>
 
       <!-- user can fill out this form to provide their name and address before deciding to start creating an order -->
-      <div class="row hidden" id="formRow">
+      <div class="row hidden initHidden" id="formRow">
         <div class="col-md-12">
 
           <form id="form">
@@ -46,7 +46,7 @@
       </div>
 
       <!-- user can create a pizza that will be added to their order -->
-      <div class="row hidden" id="pizzaBuilderContainerRow">
+      <div class="row hidden initHidden" id="pizzaBuilderContainerRow">
         <div class="col-md-12">
 
           <div class="row" id="pizzaBaseRow">
@@ -67,7 +67,7 @@
             </div>
           </div>
 
-          <div class="row hidden" id="pizzaSizeRow">
+          <div class="row hidden initHidden" id="pizzaSizeRow">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-12">
@@ -88,7 +88,7 @@
             </div>
           </div>
 
-          <div class="row hidden" id="buildPizzaRow">
+          <div class="row hidden initHidden" id="buildPizzaRow">
 
             <div class="col-md-12">
               <p>Select the toppings you would like on your pizza</p>
@@ -120,16 +120,16 @@
               </div>
 
               <div class="row" id="pizzaDisplayRow">
-                <img class="hidden base" src="img/pizza-cheese.png" id="cheeseAndTomatoSauce" alt="Cheese Pizza Base">
-                <img class="hidden base" src="img/pizza-no-cheese.jpg" id="onlyTomatoSauce" alt="No Cheese Pizza Base">
-                <img class="hidden" src="img/anchovy.svg" id="img0" alt="Anchovy">
-                <img class="hidden" src="img/basil.png" id="img2" alt="Basil">
-                <img class="hidden" src="img/broccoli.png" id="img1" alt="Broccoli">
-                <img class="hidden" src="img/cheese.png" id="img3" alt="Cheese">
-                <img class="hidden" src="img/ham.png" id="img4" alt="Ham">
-                <img class="hidden" src="img/jalapeno.png" id="img5" alt="Jalapeno">
-                <img class="hidden" src="img/mushroom.png" id="img6" alt="Mushroom">
-                <img class="hidden" src="img/pineapple.jpg" id="img7" alt="Pineapple">
+                <img class="hidden initHidden base" src="img/pizza-cheese.png" id="cheeseAndTomatoSauce" alt="Cheese Pizza Base">
+                <img class="hidden initHidden base" src="img/pizza-no-cheese.jpg" id="onlyTomatoSauce" alt="No Cheese Pizza Base">
+                <img class="hidden initHidden" src="img/anchovy.svg" id="img0" alt="Anchovy">
+                <img class="hidden initHidden" src="img/basil.png" id="img2" alt="Basil">
+                <img class="hidden initHidden" src="img/broccoli.png" id="img1" alt="Broccoli">
+                <img class="hidden initHidden" src="img/cheese.png" id="img3" alt="Cheese">
+                <img class="hidden initHidden" src="img/ham.png" id="img4" alt="Ham">
+                <img class="hidden initHidden" src="img/jalapeno.png" id="img5" alt="Jalapeno">
+                <img class="hidden initHidden" src="img/mushroom.png" id="img6" alt="Mushroom">
+                <img class="hidden initHidden" src="img/pineapple.png" id="img7" alt="Pineapple">
               </div>
 
             </div>
@@ -142,7 +142,7 @@
             </div>
           </div>
 
-          <div class="row hidden" id="submitPizzaRow">
+          <div class="row hidden initHidden" id="submitPizzaRow">
             <div class="col-md-12">
               <button type="button" class="btn" id="submitPizza">Order Pizza</button>
             </div>
@@ -151,7 +151,7 @@
       </div>
 
       <!-- user can choose to continue to confirmation or order another pizza -->
-      <div class="row hidden" id="orderMorePizzaRow">
+      <div class="row hidden initHidden" id="orderMorePizzaRow">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
@@ -170,7 +170,7 @@
       </div>
 
       <!-- user can see their current pizzas, delete pizzas, order new pizza, or complete their order -->
-      <div class="row hidden" id="orderConfirmationRow">
+      <div class="row hidden initHidden" id="orderConfirmationRow">
         <div class="col-md-12">
           <p id="confirmationMessage"></p>
           <div class="row" id="pizzasContainer">
@@ -195,6 +195,12 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row hidden initHidden" id="finalMessage">
+        <p>Thank You <span id="customerNameSpan"></span> for your order. Your pizza(s) will be delivered
+        to <span id="customerAddressSpan"></span> within the next thirty minutes. Please have cash ready
+        for payment. We hope that you enjoy your pizzas!</p>
       </div>
 
 
